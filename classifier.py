@@ -19,10 +19,8 @@ location_names = crime_df['location'].unique()
 location_enc = preprocessing.LabelEncoder()
 location_enc.fit(location_names)
 
-print(crime_names)
-print(location_names)
-
-print()
+# print(crime_names)
+# print(location_names)
 
 crime_enc = preprocessing.LabelEncoder()
 crime_enc.fit(crime_names)
@@ -82,7 +80,7 @@ def crime_interval_classify(month, start_day, end_day, hour, location):
         for index, prob in enumerate(probabilities):
 
             key = crime_enc.inverse_transform([index])[0]
-            print(key)
+            # print(key)
 
             if key in raw_results:
                 raw_results[key].append(float(prob) * 100)
@@ -109,7 +107,7 @@ def location_interval_classify(month, start_day, end_day, hour, crime):
         for index, prob in enumerate(probabilities):
 
             key = location_enc.inverse_transform([index])[0]
-            print(key)
+            # print(key)
 
             if key in raw_results:
                 raw_results[key].append(float(prob) * 100)
@@ -158,4 +156,5 @@ def crime_ids():
 
 
 if __name__ == "__main__":
-    print(crime_interval_classify(month=12, start_day=5, end_day=12, hour=22, location=0))
+    pass
+    # print(crime_interval_classify(month=12, start_day=5, end_day=12, hour=22, location=0))

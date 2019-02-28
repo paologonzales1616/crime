@@ -3,9 +3,10 @@
     font: 1em sans-serif;
     font-size: 56px;
     position: absolute;
-    top: 3;
+    top: 1%;
     z-index: 1;
-    left: 35%;
+
+    left: 38%;
     letter-spacing: 12px;
 }
 
@@ -15,7 +16,11 @@
     font: 1em sans-serif;
     font-size: 24px;
     position: absolute;
-    top: 5;
+    top: 3%;
+    left: 40%;
     z-index: 1;
-    left: 33%;
+}
+
+.app-clock-div{
+    width: 100%;
 }

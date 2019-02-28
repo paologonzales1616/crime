@@ -9,7 +9,7 @@ const TimeComponent = () => {
     for (let index = 0; index <= 24; index++) {
         temp.push(index)
     }
-    return temp.map(data => <option key={data} value={data}>{data}</option>);
+    return temp.map(data => <option key={data} value={`${data}`}>{data}</option>);
 }
 
 const MonthComponent = () => {
@@ -17,7 +17,7 @@ const MonthComponent = () => {
     for (let index = 1; index <= 12; index++) {
         temp.push(index)
     }
-    return temp.map(data => <option key={data} value={data}>{data}</option>);
+    return temp.map(data => <option key={data} value={`${data}`}>{data}</option>);
 }
 
 const StartDayComponent = () => {
@@ -25,7 +25,7 @@ const StartDayComponent = () => {
     for (let index = 1; index <= 31; index++) {
         temp.push(index)
     }
-    return temp.map(data => <option key={data} value={data}>{data}</option>);
+    return temp.map(data => <option key={data} value={`${data}`}>{data}</option>);
 }
 
 const EndDayComponent = props => {
@@ -33,15 +33,15 @@ const EndDayComponent = props => {
     for (let index = props.data; index <= 31; index++) {
         temp.push(index)
     }
-    return temp.map(data => <option key={data} value={data}>{data}</option>);
+    return temp.map(data => <option key={data} value={`${data}`}>{data}</option>);
 }
 
 const CrimeComponent = props => {
-    return props.data.map((data, index) => <option key={index} value={data.id}>{data.crime}</option>)
+    return props.data.map((data, index) => <option key={index} value={`${data.id}`}>{data.crime}</option>)
 }
 
 const LocationComponent = props => {
-    return props.data.map((data, index) => <option key={index} value={data.id}>{data.location}</option>)
+    return props.data.map((data, index) => <option key={index} value={`${data.id}`}>{data.location}</option>)
 }
 
 const AppForm = ({ url, startDay, locations, crimes, classify, changeMonth, changeStartDay, changeHour, changeEndDay, changeLoc, changeCrime, logout, locationDropdown, crimeDropdown, changeAppAddform, addForm }) => {

@@ -29,6 +29,7 @@ def index(path):
     else:
         return send_from_directory('build', 'index.html')
 
+
 @app.route('/dataset')
 def dataset():
     return send_from_directory('dataset', 'crime_dataset.csv')
@@ -43,18 +44,21 @@ def location_ids():
 def crime_ids():
     return jsonify(classifier.crime_ids())
 
+
 class UpdateDataset(Resource):
     def post(self):
         args = parser.parse_args()
         classifier.update_dataset(
-            int(args['month']), 
-            int(args['day']), 
-            int(args['hour']), 
+            int(args['month']),
+            int(args['day']),
+            int(args['hour']),
             int(args['location']),
             int(args['crime']))
         return 'SUCCESS', 200
 
 # noinspection PyMethodMayBeStatic
+
+
 class CrimeClassifier(Resource):
     def post(self):
         args = parser.parse_args()
@@ -66,12 +70,15 @@ class CrimeClassifier(Resource):
         if end_day == -1:
             end_day = start_day + 1
 
+        if start_day == end_day:
+            end_day = start_day + 1
+
         temp_result = classifier.crime_interval_classify(
-           int(args['month']),
-           int(start_day),        
-           int(end_day),
-           int(args['hour']),
-           int(args['location']))
+            int(args['month']),
+            int(start_day),
+            int(end_day),
+            int(args['hour']),
+            int(args['location']))
         for key, value in temp_result.items():
             temp_array.append({"crime": key, "value": value})
         return temp_array
@@ -80,8 +87,8 @@ class CrimeClassifier(Resource):
 # noinspection PyMethodMayBeStatic
 class LocationClassifier(Resource):
     def post(self):
-        args=parser.parse_args()
-        temp_array=[]
+        args = parser.parse_args()
+        temp_array = []
 
         start_day = int(args['startDay'])
         end_day = int(args['endDay'])
@@ -89,12 +96,15 @@ class LocationClassifier(Resource):
         if end_day == -1:
             end_day = start_day + 1
 
+        if start_day == end_day:
+            end_day = start_day + 1
+
         temp_result = classifier.location_interval_classify(
-           int(args['month']),
-           int(start_day),        
-           int(end_day),
-           int(args['hour']),
-           int(args['crime']))
+            int(args['month']),
+            int(start_day),
+            int(end_day),
+            int(args['hour']),
+            int(args['crime']))
         for key, value in temp_result.items():
             temp_array.append({"brgy": key, "value": value})
         return temp_array
