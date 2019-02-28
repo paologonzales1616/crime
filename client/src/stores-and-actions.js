@@ -10,7 +10,7 @@ const initialState = {
     updateHour: 1,
     updateLocation: -1,
     updateCrime: -1,
-    url: url,
+    url: '',
     addForm: false,
     locations: [],
     crimes: [],
@@ -216,7 +216,7 @@ const actions = store => ({
     changeEndDay: ({ endDay }, e) => ({ endDay: parseInt(e.target.value) }),
     changeHour: ({ hour }, e) => ({ hour: parseInt(e.target.value) }),
 });
-const url = config.production ? window.location.host : 'http://127.0.0.1:8000/'
+const url = config.production ? `https://${window.location.host}/` : 'http://127.0.0.1:8000/'
 store.setState({ url: url })
 
 fetch(`${url}locationIds`, {
@@ -242,8 +242,6 @@ fetch(`${url}crimeIds`, {
     .then(res => res.json())
     .then(data => store.setState({ crimes: data }))
     .catch(e => console.log(e))
-
-
 
 fire.auth().onAuthStateChanged(user => {
     if (user) {
