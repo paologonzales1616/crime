@@ -1,0 +1,21 @@
+.app-clock {
+    color: #000000;
+    font: 1em sans-serif;
+    font-size: 56px;
+    position: absolute;
+    top: 3;
+    z-index: 1;
+    left: 35%;
+    letter-spacing: 12px;
+}
+
+.app-date {
+    padding-top: 54px;
+    color: #000000;
+    font: 1em sans-serif;
+    font-size: 24px;
+    position: absolute;
+    top: 5;
+    z-index: 1;
+    left: 33%;
+}
