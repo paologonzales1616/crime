@@ -67,11 +67,13 @@ class CrimeClassifier(Resource):
         start_day = int(args['startDay'])
         end_day = int(args['endDay'])
 
-        if end_day == -1:
-            end_day = start_day + 1
+        end_day = start_day + 1 if end_day == -1 else end_day
+        end_day = start_day + 1 if start_day == end_day else end_day
+        # if end_day == -1:
+        #     end_day = start_day + 1
 
-        if start_day == end_day:
-            end_day = start_day + 1
+        # if start_day == end_day:
+        #     end_day = start_day + 1
 
         temp_result = classifier.crime_interval_classify(
             int(args['month']),
@@ -93,11 +95,14 @@ class LocationClassifier(Resource):
         start_day = int(args['startDay'])
         end_day = int(args['endDay'])
 
-        if end_day == -1:
-            end_day = start_day + 1
+        end_day = start_day + 1 if end_day == -1 else end_day
+        end_day = start_day + 1 if start_day == end_day else end_day
 
-        if start_day == end_day:
-            end_day = start_day + 1
+        # if end_day == -1:
+        #     end_day = start_day + 1
+
+        # if start_day == end_day:
+        #     end_day = start_day + 1
 
         temp_result = classifier.location_interval_classify(
             int(args['month']),
