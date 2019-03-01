@@ -40,6 +40,8 @@ const store = devtools(
     createStore(initialState)
 );
 
+const url = config.production ? `https://${window.location.host}/` : 'http://127.0.0.1:8000/'
+store.setState({ url: url })
 const actions = store => ({
     upload: ({ updateMonth, updateDay, updateHour, updateLocation, updateCrime, url }) => {
         fetch(`${url}update`, {
@@ -132,6 +134,7 @@ const actions = store => ({
     logout: () => {
         store.setState(initialState)
         fire.auth().signOut().then(data => console.log(data)).catch(error => console.log(error))
+        store.setState({ url: url })
     },
     changeLoc: ({ location, crimeDropdown }, e) => {
         store.setState({ location: parseInt(e.target.value) })
@@ -216,8 +219,7 @@ const actions = store => ({
     changeEndDay: ({ endDay }, e) => ({ endDay: parseInt(e.target.value) }),
     changeHour: ({ hour }, e) => ({ hour: parseInt(e.target.value) }),
 });
-const url = config.production ? `https://${window.location.host}/` : 'http://127.0.0.1:8000/'
-store.setState({ url: url })
+
 
 fetch(`${url}locationIds`, {
     mode: 'cors',
