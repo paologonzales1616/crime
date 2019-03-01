@@ -139,6 +139,12 @@ const actions = store => ({
             url: url,
             crimeDropdown: false,
             locationDropdown: false,
+            month: 1,
+            startDay: 1,
+            endDay: 1,
+            hour: 1,
+            location: -1,
+            crime: -1,
         })
         fire.auth().signOut().then(data => console.log(data)).catch(error => console.log(error))
     },
