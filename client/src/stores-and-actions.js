@@ -136,9 +136,11 @@ const actions = store => ({
             password: '',
             summaryGraph: false,
             table: false,
+            url: url,
+            crimeDropdown: false,
+            locationDropdown: false,
         })
         fire.auth().signOut().then(data => console.log(data)).catch(error => console.log(error))
-        store.setState({ url: url })
     },
     changeLoc: ({ location, crimeDropdown }, e) => {
         store.setState({ location: parseInt(e.target.value) })
@@ -186,7 +188,7 @@ const actions = store => ({
             store.setState({ lat: 14.1203577, lng: 121.2905786, zoom: 14 })
         }
         if (parseInt(e.target.value) === 12) {
-            store.setState({ lat: 	14.1100429, lng: 121.2699946, zoom: 14 })
+            store.setState({ lat: 14.1100429, lng: 121.2699946, zoom: 14 })
         }
         if (parseInt(e.target.value) === 13) {
             store.setState({ lat: 14.141246, lng: 121.3174544, zoom: 14 })
