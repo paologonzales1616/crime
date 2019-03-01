@@ -4,40 +4,37 @@ import fire from './config/Fire'
 import config from './config/Config'
 import swal from 'sweetalert';
 
-const initialState = {
-    updateMonth: 1,
-    updateDay: 1,
-    updateHour: 1,
-    updateLocation: -1,
-    updateCrime: -1,
-    url: '',
-    addForm: false,
-    locations: [],
-    crimes: [],
-    resultCrime: [],
-    month: 1,
-    startDay: 1,
-    endDay: 1,
-    hour: 1,
-    location: -1,
-    crime: -1,
-    crimeDropdown: false,
-    locationDropdown: false,
-    result: [],
-    summary: {},
-    user: {},
-    username: '',
-    password: '',
-    summaryGraph: false,
-    table: false,
-    lat: 14.1384,
-    lng: 121.3198,
-    zoom: 12
-}
-
-
 const store = devtools(
-    createStore(initialState)
+    createStore({
+        updateMonth: 1,
+        updateDay: 1,
+        updateHour: 1,
+        updateLocation: -1,
+        updateCrime: -1,
+        url: '',
+        addForm: false,
+        locations: [],
+        crimes: [],
+        resultCrime: [],
+        month: 1,
+        startDay: 1,
+        endDay: 1,
+        hour: 1,
+        location: -1,
+        crime: -1,
+        crimeDropdown: false,
+        locationDropdown: false,
+        result: [],
+        summary: {},
+        user: {},
+        username: '',
+        password: '',
+        summaryGraph: false,
+        table: false,
+        lat: 14.1384,
+        lng: 121.3198,
+        zoom: 12
+    })
 );
 
 const url = config.production ? `https://${window.location.host}/` : 'http://127.0.0.1:8000/'
@@ -132,7 +129,14 @@ const actions = store => ({
         fire.auth().signInWithEmailAndPassword(username, password).then(u => { }).catch(err => console.log(err))
     },
     logout: () => {
-        store.setState(initialState)
+        store.setState({
+            addForm: false,
+            user: {},
+            username: '',
+            password: '',
+            summaryGraph: false,
+            table: false,
+        })
         fire.auth().signOut().then(data => console.log(data)).catch(error => console.log(error))
         store.setState({ url: url })
     },
