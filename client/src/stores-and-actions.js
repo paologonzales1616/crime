@@ -91,7 +91,7 @@ const actions = store => ({
                     .then(data => {
                         // console.log(data)
                         store.setState({ result: data.sort(function(a, b){
-                            return a.value == b.value ? 0 : +(a.value > b.value) || -1;
+                            return a.value == b.value ? 0 : +(a.value < b.value) || -1;
                           }) })
                         // store.setState({ result: Array.reverse(data.sort((a, b) => (a.value > b.value) ? 1 : ((b.value > a.value) ? -1 : 0))) })
                         store.setState({ table: true })
@@ -124,7 +124,7 @@ const actions = store => ({
                         // data.sort((a, b) => a.value.localeCompare(b.value));
                         // store.setState({ resultCrime: Array.reverse(data.sort((a, b) => (a.value > b.value) ? 1 : ((b.value > a.value) ? -1 : 0))) })
                         store.setState({ resultCrime: data.sort(function(a, b){
-                            return a.value == b.value ? 0 : +(a.value > b.value) || -1;
+                            return a.value == b.value ? 0 : +(a.value < b.value) || -1;
                           }) })
                         store.setState({ summaryGraph: true })
                         store.setState({ table: false })
