@@ -11,7 +11,7 @@ const MapWithAMarker = withScriptjs(
 
 const AppMap = () => {
   return (<MapWithAMarker
-    googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyBD5TONxgsx86_zK3A5uRhe8YL4USivhfA"
+    googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_r3ZpnvqK4Eb5ws9fsAFs0JGfReRU664"
     loadingElement={<div style={{ height: `100%` }} />}
     containerElement={<div style={{ height: `100vh` }} />}
     mapElement={<div style={{ height: `100%` }} />}
